@@ -19,6 +19,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,6 +58,12 @@ public class MainActivity extends AppCompatActivity {
         Button button = (Button) findViewById(R.id.login_btn);
         button.setOnClickListener(v -> {
             dialog.show();
+        });
+
+
+        Button exitBtn = (Button) findViewById(R.id.exit_btn);
+        exitBtn.setOnClickListener(v -> {
+            finish();
         });
     }
 }
