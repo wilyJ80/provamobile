@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             EditText username = customLayout.findViewById(R.id.username);
             EditText password = customLayout.findViewById(R.id.password);
 
-            if (username.getText().toString().equals("") && password.getText().toString().equals("")) {
+            if (LoginService.validateOnStart(username.getText().toString(), password.getText().toString())) {
                 var intent = new Intent(getApplicationContext(), MainActivity2.class);
                 startActivity(intent);
             } else {
