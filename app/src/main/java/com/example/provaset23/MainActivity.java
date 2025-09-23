@@ -3,6 +3,7 @@ package com.example.provaset23;
 import static android.app.PendingIntent.getActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,8 +35,15 @@ public class MainActivity extends AppCompatActivity {
         builder.setView(customLayout);
 
         builder.setPositiveButton("OK", (dialog, which) -> {
-            EditText editText = customLayout.findViewById(R.id.username);
-            Toast.makeText(MainActivity.this, editText.getText().toString(), Toast.LENGTH_SHORT).show();
+            EditText username = customLayout.findViewById(R.id.username);
+            EditText password = customLayout.findViewById(R.id.password);
+
+            if (username.getText().toString().equals("") && password.getText().toString().equals("")) {
+                var intent = new Intent(getApplicationContext(), MainActivity2.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(MainActivity.this, "Wrong username or password", Toast.LENGTH_SHORT).show();
+            }
         });
 
         builder.setNegativeButton("Exit", (dialog, which) -> {
@@ -45,5 +53,10 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.setCancelable(false);
         dialog.show();
+
+        Button button = (Button) findViewById(R.id.login_btn);
+        button.setOnClickListener(v -> {
+            dialog.show();
+        });
     }
 }
