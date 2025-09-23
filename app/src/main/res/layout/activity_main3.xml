@@ -70,6 +70,7 @@
                     android:layout_height="wrap_content"
                     android:text="Reset"
                     android:layout_gravity="end"
+                    android:id="@+id/submit"
                     />
 
             </LinearLayout>
