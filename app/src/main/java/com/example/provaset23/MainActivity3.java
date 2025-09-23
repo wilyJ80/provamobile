@@ -26,9 +26,17 @@ public class MainActivity3 extends AppCompatActivity {
         Button submit = (Button) findViewById(R.id.submit);
 
         submit.setOnClickListener(v -> {
-            Toast.makeText(this, "Credentials updated", Toast.LENGTH_SHORT).show();
-            var intent = new Intent(getApplicationContext(), MainActivity2.class);
-            startActivity(intent);
+
+            if (LoginService.validateReset(username.getText().toString(), password.getText().toString(), confirm.getText().toString())) {
+
+                Toast.makeText(this, "Credentials updated", Toast.LENGTH_SHORT).show();
+                var intent = new Intent(getApplicationContext(), MainActivity2.class);
+                startActivity(intent);
+
+            } else {
+
+                Toast.makeText(this, "Username must not be empty, passwords must match, password must be at least 8 characters", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 }
