@@ -4,6 +4,7 @@ import static android.app.PendingIntent.getActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             EditText username = customLayout.findViewById(R.id.username);
             EditText password = customLayout.findViewById(R.id.password);
 
-            if (LoginService.validateOnStart(username.getText().toString(), password.getText().toString())) {
+            if (LoginService.loginValidation(getApplicationContext(), username.getText().toString(), password.getText().toString())) {
                 var intent = new Intent(getApplicationContext(), MainActivity2.class);
                 startActivity(intent);
             } else {
@@ -66,4 +67,5 @@ public class MainActivity extends AppCompatActivity {
             finish();
         });
     }
+
 }
